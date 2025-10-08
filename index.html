@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Amma 💝</title>
+    <title>Happy Birthday Amma 💖</title>
     <style>
         * {
             margin: 0;
@@ -14,145 +14,236 @@
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffeaa7 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
         }
 
-        /* Balloons */
+        @keyframes float-hearts {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 30px;
+            animation: float-hearts 15s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 25%; animation-delay: 3s; font-size: 25px; }
+        .heart:nth-child(3) { left: 40%; animation-delay: 6s; font-size: 35px; }
+        .heart:nth-child(4) { left: 55%; animation-delay: 9s; font-size: 28px; }
+        .heart:nth-child(5) { left: 70%; animation-delay: 12s; font-size: 32px; }
+        .heart:nth-child(6) { left: 85%; animation-delay: 4s; font-size: 26px; }
+
         .balloon {
             position: fixed;
             bottom: -100px;
-            width: 80px;
-            height: 100px;
+            width: 60px;
+            height: 75px;
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: float-up 8s ease-in infinite;
+            animation: float-up 10s ease-in infinite;
             z-index: 1;
         }
 
         .balloon:before {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
-            width: 2px;
-            height: 60px;
-            background: #333;
+            width: 1px;
+            height: 50px;
+            background: rgba(51, 51, 51, 0.3);
         }
 
-        .balloon-1 { background: #ff6b9d; left: 10%; animation-delay: 0s; }
-        .balloon-2 { background: #feca57; left: 30%; animation-delay: 1.5s; }
-        .balloon-3 { background: #48dbfb; left: 50%; animation-delay: 3s; }
-        .balloon-4 { background: #ff9ff3; left: 70%; animation-delay: 4.5s; }
-        .balloon-5 { background: #54a0ff; left: 90%; animation-delay: 6s; }
+        .balloon-1 { background: #ff6b9d; left: 5%; animation-delay: 0s; }
+        .balloon-2 { background: #feca57; left: 20%; animation-delay: 2s; }
+        .balloon-3 { background: #48dbfb; left: 35%; animation-delay: 4s; }
+        .balloon-4 { background: #ff9ff3; left: 50%; animation-delay: 6s; }
+        .balloon-5 { background: #54a0ff; left: 65%; animation-delay: 8s; }
+        .balloon-6 { background: #ff6b9d; left: 80%; animation-delay: 10s; }
+        .balloon-7 { background: #feca57; left: 95%; animation-delay: 3s; }
 
         @keyframes float-up {
-            0% { bottom: -100px; transform: translateX(0) rotate(0deg); }
+            0% { bottom: -100px; transform: translateX(0) rotate(0deg); opacity: 0.8; }
             50% { transform: translateX(20px) rotate(5deg); }
-            100% { bottom: 110%; transform: translateX(-20px) rotate(-5deg); }
+            100% { bottom: 110%; transform: translateX(-20px) rotate(-5deg); opacity: 0; }
         }
 
-        /* String lights */
         .lights {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50px;
+            height: 40px;
             z-index: 1000;
             display: flex;
             justify-content: space-around;
+            pointer-events: none;
         }
 
         .light {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
 
         .light:nth-child(1) { background: #ff6b9d; animation-delay: 0s; }
-        .light:nth-child(2) { background: #feca57; animation-delay: 0.3s; }
-        .light:nth-child(3) { background: #48dbfb; animation-delay: 0.6s; }
-        .light:nth-child(4) { background: #ff9ff3; animation-delay: 0.9s; }
-        .light:nth-child(5) { background: #54a0ff; animation-delay: 1.2s; }
-        .light:nth-child(6) { background: #ff6b9d; animation-delay: 1.5s; }
+        .light:nth-child(2) { background: #feca57; animation-delay: 0.2s; }
+        .light:nth-child(3) { background: #48dbfb; animation-delay: 0.4s; }
+        .light:nth-child(4) { background: #ff9ff3; animation-delay: 0.6s; }
+        .light:nth-child(5) { background: #54a0ff; animation-delay: 0.8s; }
+        .light:nth-child(6) { background: #ff6b9d; animation-delay: 1s; }
+        .light:nth-child(7) { background: #feca57; animation-delay: 1.2s; }
+        .light:nth-child(8) { background: #48dbfb; animation-delay: 1.4s; }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; box-shadow: 0 0 20px currentColor; }
-            50% { opacity: 0.3; }
+            0%, 100% { opacity: 1; box-shadow: 0 0 20px currentColor; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
         }
 
-        /* Container */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px 50px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             z-index: 2;
+            padding: 20px;
         }
 
-        /* Carousel */
         .carousel {
+            width: 100%;
+            height: 100%;
             position: relative;
-            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             display: none;
-            animation: fadeIn 1s ease-in;
+            animation: fadeInScale 1.5s ease-out;
         }
 
         .carousel-slide.active {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInScale {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.8) rotateY(90deg);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateY(0deg);
+            }
         }
 
-        /* Letter Box */
         .letter-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
-            padding: 60px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255, 107, 157, 0.3);
             border: 5px solid #ff9ff3;
-            min-height: 70vh;
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: floatBox 6s ease-in-out infinite;
+        }
+
+        @keyframes floatBox {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .letter-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .letter-box::-webkit-scrollbar-track {
+            background: #fecfef;
+            border-radius: 10px;
+        }
+
+        .letter-box::-webkit-scrollbar-thumb {
+            background: #ff6b9d;
+            border-radius: 10px;
         }
 
         .letter-box h1 {
-            font-size: 3em;
+            font-size: 2.8em;
             color: #ff1744;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .letter-box h2 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             color: #ff1744;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .letter-box h3 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: #d81b60;
-            margin-top: 40px;
+            margin-top: 30px;
             margin-bottom: 20px;
             border-left: 5px solid #ff9ff3;
             padding-left: 20px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .letter-box p {
-            font-size: 1.2em;
-            line-height: 1.9;
+            font-size: 1.15em;
+            line-height: 1.8;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: justify;
         }
 
@@ -162,172 +253,268 @@
             border-left: 5px solid #feca57;
             padding: 20px;
             margin: 30px 0;
-            background: #fff9e6;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+            border-radius: 15px;
             font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(254, 202, 87, 0.3);
         }
 
         .signature {
             text-align: right;
-            font-size: 1.4em;
+            font-size: 1.3em;
             color: #d81b60;
-            margin-top: 50px;
+            margin-top: 40px;
             font-weight: bold;
             font-style: italic;
         }
 
         .hero-emojis {
-            font-size: 3em;
+            font-size: 2.5em;
             text-align: center;
             margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            75% { transform: translateY(-10px) rotate(-5deg); }
         }
 
         .hero-subtitle {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #d81b60;
-            margin: 20px 0;
+            margin: 15px 0;
             text-align: center;
+            animation: fadeIn 2s ease-out;
         }
 
-        /* Navigation Controls */
-        .carousel-controls {
-            position: fixed;
-            bottom: 30px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes flapOpen {
+            0% { 
+                transform: rotateX(0deg);
+            }
+            100% { 
+                transform: rotateX(-180deg);
+            }
+        }
+
+        @keyframes letterSlideUp {
+            0% { 
+                transform: translateY(80%);
+            }
+            100% { 
+                transform: translateY(0);
+            }
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 2000px;
+        }
+
+        .envelope-back {
+            position: absolute;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            height: 600px;
+            background: linear-gradient(135deg, #ff9ff3 0%, #feca57 100%);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            height: 300px;
+            background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+            transform-origin: top center;
+            animation: flapOpen 2s ease-out 0.5s forwards;
+            z-index: 3;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .letter-paper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 80%));
+            width: 85%;
+            max-width: 850px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 50px;
+            animation: letterSlideUp 2s ease-out 1.5s forwards;
+            z-index: 2;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+
+        .play-pause-btn {
+            position: fixed;
+            top: 60px;
+            right: 30px;
+            padding: 10px 20px;
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            z-index: 1001;
             backdrop-filter: blur(10px);
         }
 
-        .carousel-btn {
-            padding: 12px 25px;
-            background: rgba(255, 107, 157, 0.8);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
-        }
-
-        .carousel-btn:hover {
+        .play-pause-btn:hover {
             background: rgba(255, 107, 157, 1);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
-            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
         }
 
-        .carousel-btn:active {
-            transform: translateY(-1px) scale(0.98);
-            box-shadow: 0 3px 10px rgba(255, 107, 157, 0.4);
+        .play-pause-btn:active {
+            transform: scale(0.95);
         }
 
-        .carousel-dots {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .dot.active {
-            background: #ff6b9d;
-            width: 30px;
-            border-radius: 6px;
-        }
-
-        /* Celebration */
         .celebration {
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         .cake-big {
-            font-size: 200px;
+            font-size: 150px;
             cursor: pointer;
             display: inline-block;
-            animation: bounce 2s infinite;
+            animation: cakeBounce 2s infinite;
             transition: transform 0.3s;
         }
 
         .cake-big:hover {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.3) rotate(15deg);
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+        @keyframes cakeBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(-5deg); }
+            75% { transform: translateY(-15px) rotate(5deg); }
         }
 
         .celebration-text {
-            font-size: 2em;
+            font-size: 1.5em;
             color: #ff1744;
-            margin: 30px 0;
+            margin: 20px 0;
             font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .wish-button {
-            padding: 20px 40px;
-            font-size: 1.3em;
+            padding: 15px 30px;
+            font-size: 1.1em;
             background: linear-gradient(135deg, #feca57, #ff9ff3);
             color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 10px;
-            box-shadow: 0 10px 30px rgba(254, 202, 87, 0.5);
+            margin: 8px;
+            box-shadow: 0 8px 20px rgba(254, 202, 87, 0.5);
             transition: all 0.3s;
+            font-weight: bold;
         }
 
         .wish-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(254, 202, 87, 0.7);
+            transform: scale(1.15) rotate(3deg);
+            box-shadow: 0 12px 30px rgba(254, 202, 87, 0.7);
         }
 
         .wish-display {
-            margin-top: 30px;
-            padding: 30px;
+            margin-top: 25px;
+            padding: 25px;
             background: white;
             border-radius: 20px;
-            font-size: 1.3em;
+            font-size: 1.2em;
             color: #ff1744;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            min-height: 100px;
+            min-height: 80px;
+            animation: fadeInScale 0.5s ease-out;
         }
 
-        /* Responsive */
+        @keyframes sparkle {
+            0% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) rotate(180deg);
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
         @media (max-width: 768px) {
-            .letter-box { padding: 30px 20px; }
+            .letter-box { 
+                padding: 30px 20px;
+                max-height: 80vh;
+            }
             .letter-box h1 { font-size: 2em; }
-            .letter-box h2 { font-size: 1.8em; }
-            .letter-box h3 { font-size: 1.4em; }
+            .letter-box h2 { font-size: 1.6em; }
+            .letter-box h3 { font-size: 1.3em; }
             .letter-box p { font-size: 1em; }
-            .cake-big { font-size: 120px; }
-            .carousel-controls { 
-                flex-direction: column;
-                gap: 10px;
+            .cake-big { font-size: 100px; }
+            .hero-emojis { font-size: 2em; }
+            .hero-subtitle { font-size: 1.4em; }
+            .play-pause-btn {
+                top: 50px;
+                right: 15px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            .wish-button {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            .envelope-back,
+            .envelope-flap {
+                width: 95%;
+            }
+            .letter-paper {
+                width: 90%;
+                padding: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- String Lights -->
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">💞</div>
+    <div class="heart">💝</div>
+
     <div class="lights">
+        <div class="light"></div>
+        <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
@@ -336,152 +523,187 @@
         <div class="light"></div>
     </div>
 
-    <!-- Balloons -->
     <div class="balloon balloon-1"></div>
     <div class="balloon balloon-2"></div>
     <div class="balloon balloon-3"></div>
     <div class="balloon balloon-4"></div>
     <div class="balloon balloon-5"></div>
+    <div class="balloon balloon-6"></div>
+    <div class="balloon balloon-7"></div>
 
-    <!-- Main Content -->
+    <button class="play-pause-btn" id="playPauseBtn">⏸️ Pause</button>
+
     <div class="container">
         <div class="carousel">
-            <!-- Slide 1: Welcome -->
             <div class="carousel-slide active">
-                <div class="letter-box">
-                    <div class="hero-emojis">🎂 🎈 🎁 💐 🎊</div>
-                    <h1>Happy Birthday Amma!</h1>
-                    <div class="hero-subtitle">To My First Best Friend</div>
-                    <div class="hero-subtitle">My Warrior, My Light, My Everything</div>
-                    <div class="hero-emojis">👑 💝 🌹 ✨ 💕</div>
+                <div class="letter-box" id="firstSlide">
+                    <div class="hero-emojis" style="font-size: 2em; margin: 20px 0;">🎂 🎈 🎁 💖 🎊</div>
+                    <h1 style="line-height: 1.4; font-size: 2.8em; margin: 50px 0;">Happy<br>Birthday<br>Amma!</h1>
+                    <div class="hero-emojis" style="font-size: 2em; margin: 20px 0;">👑 💐 🌹 ✨ 💕</div>
                 </div>
             </div>
 
-            <!-- Slide 2: Beginning -->
+            <div class="carousel-slide">
+                <div class="letter-box" id="secondSlide">
+                    <div class="hero-emojis" style="font-size: 2em;">💌 ✨ 💖</div>
+                    <h1 style="font-size: 2.8em; line-height: 1.4; margin: 50px 0;">A Letter<br>From<br>Your Princess</h1>
+                    <div class="hero-emojis" style="font-size: 2em;">👸 🌟 💕</div>
+                </div>
+            </div>
+
             <div class="carousel-slide">
                 <div class="letter-box">
-                    <h2>💌 A Letter From Your Princess 💌</h2>
                     <h3>🌟 The Beginning - Where Love First Began</h3>
                     <p>Before I even knew the world, I knew you. Before I saw light, I felt your love. For nine precious months, I lived within you, cradled in your warmth, protected in the safest place I would ever know. Your heartbeat was my first lullaby, your voice was my first song, your love was my first home. ❤️</p>
-                    
-                    <p>You carried me with such grace, even though I know now that those months were not easy. They were filled with struggles I cannot fathom, pain I will never fully understand. You were a warrior even then, fighting battles I was too small to see, losing things you never speak of, enduring suffering you've never burdened me with. 💪</p>
-                    
+                    <p>You carried me with such grace, even though I know now that those months were not easy. They were filled with struggles I cannot fathom, pain I will never fully understand.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>🌟 The Beginning - My Warrior Mother</h3>
+                    <p>You were a warrior even then, fighting battles I was too small to see, losing things you never speak of, enduring suffering you've never burdened me with. 💪</p>
                     <p>Mom, for those nine months of sacrifice, for every moment of discomfort and pain you endured to bring me into this world—I bow down at your feet with tears in my eyes. I am here because you were strong enough to carry me through. I breathe because you chose to fight. I live because you loved me before you even met me. 🙏</p>
                 </div>
             </div>
 
-            <!-- Slide 3: First Breath -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <h3>👶 My First Breath - Meeting My First Best Friend</h3>
                     <p>The day I was born, I met my first best friend. It wasn't in a playground or a classroom—it was in your arms. Through blurred vision and in a world that was strange and new, the first face I saw was yours. And in that moment, everything made sense. 😊</p>
-                    
-                    <p>You held me like I was the most precious treasure in the universe, your baby princess, your miracle, your answered prayer. From that very first moment, you promised me with your eyes what your heart had already decided: that you would never leave my side, that you would protect me with your life, that your love for me would never waver. 💝</p>
+                    <p>You held me like I was the most precious treasure in the universe, your baby princess, your miracle, your answered prayer.</p>
+                </div>
+            </div>
 
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>👶 My First Breath - The Promise</h3>
+                    <p>From that very first moment, you promised me with your eyes what your heart had already decided: that you would never leave my side, that you would protect me with your life, that your love for me would never waver. 💖</p>
                     <p>Amma, do you know what you gave me that day? Not just life, but a reason to live it. Not just breath, but a purpose to breathe. You became my world, and I became your everything. 🌍💕</p>
                 </div>
             </div>
 
-            <!-- Slide 4: Growing Up -->
             <div class="carousel-slide">
                 <div class="letter-box">
-                    <h3>🌱 Growing Up in Your Shadow - Learning What Love Means</h3>
+                    <h3>🌱 Growing Up - Learning What Love Means</h3>
                     <p>As I grew from a tiny infant into a little girl, every step I took was guided by your gentle hands. You taught me how to walk, but more importantly, you taught me how to rise every time I fell. You fed me, not just with food, but with dreams and courage. You dressed me up not just in beautiful clothes, but in confidence and self-respect. 🌈</p>
-                    
-                    <p>Every scraped knee, every childhood fever, every nightmare—you were there. Your cool hand on my forehead, your soothing voice in my ear, your unwavering presence that told me, "You're safe, my child. I'm here." 🤗</p>
-                    
+                    <p>Every scraped knee, every childhood fever, every nightmare—you were there.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>🌱 Growing Up - Precious Memories</h3>
+                    <p>Your cool hand on my forehead, your soothing voice in my ear, your unwavering presence that told me, "You're safe, my child. I'm here." 🤗</p>
                     <p>Do you remember all those little moments, Amma? The stories you told me before bed? The way you would braid my hair while singing softly? The lunches you packed with so much love? Each memory is a precious gem in the treasure chest of my heart. 💎</p>
                 </div>
             </div>
 
-            <!-- Slide 5: Through Every Season Part 1 -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <h3>🌈 Through Every Season - You Were My Constant</h3>
                     <p>As the years passed and I grew older, life brought its seasons—some filled with sunshine and laughter, others heavy with clouds and tears. But through every single season, you remained my constant. My north star. My anchor. My home. ⚓</p>
-                    
-                    <p>When I achieved something and my heart burst with joy, you were the first person I wanted to tell. Your proud smile made every victory sweeter, every accomplishment more meaningful. You celebrated my smallest wins as if they were the greatest triumphs. You made me feel like I could conquer the world, simply because you believed in me. 🏆</p>
-                    
+                    <p>When I achieved something and my heart burst with joy, you were the first person I wanted to tell. Your proud smile made every victory sweeter, every accomplishment more meaningful.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>🌈 Through Every Season - My Champion</h3>
+                    <p>You celebrated my smallest wins as if they were the greatest triumphs. You made me feel like I could conquer the world, simply because you believed in me. 🏆</p>
                     <p>But it was in my darkest hours that your true strength shone brightest. When life pushed me into shadows, when I felt lost and alone, when pain threatened to consume me—you were my light. You didn't just stand by my side; you became my shelter from every storm. 🌟</p>
                 </div>
             </div>
 
-            <!-- Slide 6: Through Every Season Part 2 -->
             <div class="carousel-slide">
                 <div class="letter-box">
-                    <h3>🌈 Through Every Season - My Warrior Mom</h3>
+                    <h3>🌈 Through Every Season - My Warrior</h3>
                     <p>There were nights when I cried, and you cried with me—not because you were weak, but because my pain was your pain. There were days when I felt I couldn't go on, and you carried me on your shoulders, refusing to let me fall. You took my pain as your own, my struggles as your battles. 💪❤️</p>
-                    
-                    <p>You fought for me, Mom, in ways that no one else could see. When the world turned its back on me, you stood between me and everything that tried to hurt me. You were my warrior when I had no strength left to fight. You were my voice when I had no words left to speak. You were my hope when I had nothing left to hold on to.</p>
-                    
+                    <p>You fought for me, Mom, in ways that no one else could see. When the world turned its back on me, you stood between me and everything that tried to hurt me.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>🌈 Through Every Season - My Everything</h3>
+                    <p>You were my warrior when I had no strength left to fight. You were my voice when I had no words left to speak. You were my hope when I had nothing left to hold on to.</p>
                     <p>How do I thank you for this, Amma? How do I repay a debt of love that is beyond measure? I cannot. I can only love you with everything I have, for as long as I live. 🙏💕</p>
                 </div>
             </div>
 
-            <!-- Slide 7: Gratitude -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <h3>🙏 The Deepest Gratitude - To Those Who Gave Me You</h3>
                     <p>Today, my heart overflows with gratitude not just for you, but for my beloved Tataiah and Ammamma. They raised you, shaped you, and gave our family the most precious gift—you. I am blessed beyond measure that they brought such an incredible soul into this world, and that by the grace of God, you became my mother. 🌺</p>
-                    
                     <p>Thank you, Tataiah. Thank you, Ammamma. Because of you, I have a mother who is everything beautiful in this world. 🙏✨</p>
-
-                    <h3>💖 What 'Mother' Means</h3>
-                    <p>People say "mother" is just a word. But to me, it's so much more. Mother is a complete sentence that speaks of unconditional love. Mother is a promise of eternal affection. Mother is the definition of selfless care. Mother is the foundation of trust. 👩‍👧‍👦</p>
-                    
-                    <p>These aren't just concepts I've read about, Mom. These are truths I've lived because of you. You didn't just tell me about love—you showed me every single day. 💪💝</p>
                 </div>
             </div>
 
-            <!-- Slide 8: Today -->
             <div class="carousel-slide">
                 <div class="letter-box">
-                    <h3>🎂 Today - Your Special Day</h3>
-                    <p><strong style="font-size: 1.3em; color: #ff1744;">Happy Birthday, My Dearest Amma! 🎉🎂🎈</strong></p>
-                    
+                    <h3>💖 What 'Mother' Means</h3>
+                    <p>People say "mother" is just a word. But to me, it's so much more. Mother is a complete sentence that speaks of unconditional love. Mother is a promise of eternal affection. Mother is the definition of selfless care. Mother is the foundation of trust. 👩‍👧‍👦</p>
+                    <p>These aren't just concepts I've read about, Mom. These are truths I've lived because of you. You didn't just tell me about love—you showed me every single day. 💪💖</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <div class="hero-emojis" style="margin-bottom: 80px;">🎂 🎉 🎈 🎁 ✨</div>
+                    <h1 style="font-size: 3.5em; line-height: 1.8; margin: 60px 0;">Today<br>Your Special Day</h1>
+                    <div class="hero-emojis" style="margin-top: 80px;">🎊 💖 🌟 👑 💐</div>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h2 style="font-size: 1.8em; margin-bottom: 40px;">Happy Birthday, My Dearest Amma! 🎉🎂🎈</h2>
                     <p>You are not just my mother. You are my first best friend, my greatest teacher, my strongest supporter, my safest place, my truest love. You are the reason I know what home feels like, even when I'm far away—because home isn't a place, it's wherever you are. 🏠❤️</p>
-                    
                     <p>I am blessed. I am grateful. I am humbled. I am forever your daughter, your princess, your child who will never stop needing you, never stop loving you, never stop thanking God for the incredible gift of having you as my mother. 🙏👸</p>
                 </div>
             </div>
 
-            <!-- Slide 9: Promise -->
             <div class="carousel-slide">
                 <div class="letter-box">
-                    <h3>💝 A Promise</h3>
+                    <h3>💐 A Promise</h3>
                     <p>Mom, just as you have never given up on me, I promise you—I will never give up on making you proud. I will carry forward everything you've taught me. I will love the way you've shown me. I will be strong because you've shown me how. And I will always, always be there for you, just as you have been there for me. 💪</p>
-                    
-                    <p>When you need someone to lean on, I will be your strength. When you need someone to talk to, I will be your listener. When you need someone to celebrate with, I will be your biggest cheerleader. And when you need someone to simply sit beside you in silence, I will be there—because you've taught me that sometimes, presence is the greatest gift. 📣🤗</p>
-                    
+                    <p>When you need someone to lean on, I will be your strength. When you need someone to talk to, I will be your listener.</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>💐 A Promise - Forever</h3>
+                    <p>When you need someone to celebrate with, I will be your biggest cheerleader. And when you need someone to simply sit beside you in silence, I will be there—because you've taught me that sometimes, presence is the greatest gift. 📣🤗</p>
                     <p>One day, when my hair turns grey and my steps slow down, I will look back on my life and smile—because every good thing in me, every strength I possess, every moment of joy I've experienced—it all began with you. You are the root of every blessing in my life. 🌳💕</p>
                 </div>
             </div>
 
-            <!-- Slide 10: Thank You -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <h3>🙏 Thank You For Everything</h3>
-                    <p>Thank you for the nine months you carried me in your womb. 🤰<br>
-                    Thank you for the lifetime you've carried me in your heart. ❤️<br>
-                    Thank you for the countless sacrifices you've made that I'll never know about. 🙏<br>
-                    Thank you for the tears you've cried for me in secret. 😢<br>
-                    Thank you for the prayers you've whispered for my happiness. 🙏<br>
-                    Thank you for loving me not just when I was easy to love, but especially when I was difficult. 💕<br>
-                    Thank you for being you—imperfectly perfect, humanly divine, my mother. 👑</p>
-                    
+                    <p>Thank you for the nine months you carried me in your womb. 🤰</p>
+                    <p>Thank you for the lifetime you've carried me in your heart. ❤️</p>
+                    <p>Thank you for the countless sacrifices you've made that I'll never know about. 🙏</p>
+                    <p>Thank you for the tears you've cried for me in secret. 😢</p>
+                    <p>Thank you for the prayers you've whispered for my happiness. 🙏</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="letter-box">
+                    <h3>🙏 Thank You - For Being You</h3>
+                    <p>Thank you for loving me not just when I was easy to love, but especially when I was difficult. 💕</p>
+                    <p>Thank you for being you—imperfectly perfect, humanly divine, my mother. 👑</p>
                     <p>May this birthday bring you all the joy, peace, love, and happiness that you have poured into my life. You deserve the world and more, Amma. 🌍✨</p>
-                    
                     <p><strong>I love you beyond words, beyond time, beyond measure. 💖</strong></p>
                 </div>
             </div>
 
-            <!-- Slide 11: Final Message -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <blockquote>"A mother's love is the fuel that enables a normal human being to do the impossible. You, Amma, have made my impossible journey possible. Happy Birthday to my miracle, my mother." 🌟</blockquote>
-
-                    <p><em>P.S. - If I could give you one gift today, it would be the ability to see yourself through my eyes. Then you would know just how truly special you are, and how deeply, endlessly loved you will always be. 💝</em></p>
-
+                    <p><em>P.S. - If I could give you one gift today, it would be the ability to see yourself through my eyes. Then you would know just how truly special you are, and how deeply, endlessly loved you will always be. 💖</em></p>
                     <div class="signature">
                         With all the love my heart can hold and more,<br>
                         Your Princess, Forever and Always 👸💕
@@ -489,7 +711,6 @@
                 </div>
             </div>
 
-            <!-- Slide 12: Celebration -->
             <div class="carousel-slide">
                 <div class="letter-box">
                     <div class="celebration">
@@ -498,7 +719,7 @@
                         <div class="cake-big" id="cake">🎂</div>
                         <div class="celebration-text">Click the cake to blow the candles! 🕯️</div>
                         <div>
-                            <button class="wish-button" id="wish1">💝 Special Wish 1</button>
+                            <button class="wish-button" id="wish1">💖 Special Wish 1</button>
                             <button class="wish-button" id="wish2">🌟 Special Wish 2</button>
                             <button class="wish-button" id="wish3">✨ Special Wish 3</button>
                         </div>
@@ -509,79 +730,86 @@
         </div>
     </div>
 
-    <!-- Carousel Controls -->
-    <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn">← Previous</button>
-        <div class="carousel-dots" id="dotsContainer"></div>
-        <button class="carousel-btn" id="nextBtn">Next →</button>
-    </div>
-
     <script>
         let currentSlide = 0;
         let autoPlayTimer = null;
+        let isPlaying = true;
         const slides = document.querySelectorAll('.carousel-slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('dotsContainer');
-
-        // Create dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
+        const playPauseBtn = document.getElementById('playPauseBtn');
 
         function showSlide(n) {
             slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
             currentSlide = (n + slides.length) % slides.length;
-            
             slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
             
-            // Scroll to top when changing slides
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Trigger effects for slide 1
+            if (currentSlide === 0) {
+                setTimeout(() => {
+                    sweetBlast('left', 'firstSlide');
+                }, 5000);
+                
+                setTimeout(() => {
+                    sweetBlast('right', 'firstSlide');
+                }, 5500);
+            }
             
-            // Reset auto-play timer
-            resetAutoPlay();
+            // Trigger effects for slide 2
+            if (currentSlide === 1) {
+                setTimeout(() => {
+                    envelopeBlast('left', 'secondSlide');
+                }, 3000);
+                
+                setTimeout(() => {
+                    envelopeBlast('right', 'secondSlide');
+                }, 6000);
+            }
+            
+            if (isPlaying) {
+                resetAutoPlay();
+            }
         }
-        
 
         function nextSlide() {
             showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        function goToSlide(n) {
-            showSlide(n);
         }
 
         function resetAutoPlay() {
             if (autoPlayTimer) {
                 clearTimeout(autoPlayTimer);
             }
-            autoPlayTimer = setTimeout(nextSlide, 30000); // 30 seconds
+            if (isPlaying) {
+                autoPlayTimer = setTimeout(nextSlide, 60000);
+            }
         }
 
-        // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playPauseBtn.textContent = '⏸️ Pause';
+                resetAutoPlay();
+            } else {
+                playPauseBtn.textContent = '▶️ Play';
+                if (autoPlayTimer) {
+                    clearTimeout(autoPlayTimer);
+                }
+            }
+        }
 
-        // Keyboard navigation
+        playPauseBtn.addEventListener('click', togglePlayPause);
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1);
+            }
+            if (e.key === ' ') {
+                e.preventDefault();
+                togglePlayPause();
+            }
         });
 
-        // Cake interaction
         const cake = document.getElementById('cake');
         if (cake) {
             cake.addEventListener('click', function() {
@@ -590,24 +818,26 @@
                     this.textContent = '🎂';
                 }, 2000);
                 
-                // Create sparkles
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 30; i++) {
                     setTimeout(() => {
                         const sparkle = document.createElement('div');
-                        sparkle.textContent = '✨';
-                        sparkle.className = 'sparkle';
+                        sparkle.textContent = ['✨', '💖', '🌟', '💫', '⭐'][Math.floor(Math.random() * 5)];
+                        sparkle.style.position = 'fixed';
+                        sparkle.style.fontSize = (20 + Math.random() * 30) + 'px';
+                        sparkle.style.pointerEvents = 'none';
+                        sparkle.style.zIndex = '9999';
                         sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
                         sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
+                        sparkle.style.animation = 'sparkle 1.5s ease-out';
                         document.body.appendChild(sparkle);
-                        setTimeout(() => sparkle.remove(), 1000);
-                    }, i * 100);
+                        setTimeout(() => sparkle.remove(), 1500);
+                    }, i * 50);
                 }
             });
         }
 
-        // Wish buttons
         const wishes = [
-            "May your day be filled with endless joy, laughter, and all the love you've given me returned to you a thousandfold! 💝",
+            "May your day be filled with endless joy, laughter, and all the love you've given me returned to you a thousandfold! 💖",
             "Wishing you health, happiness, and countless beautiful moments in the year ahead! You deserve all the best things in life! 🌟",
             "May every dream you've ever had come true, and may you always feel as cherished as you've made me feel! ✨"
         ];
@@ -630,9 +860,123 @@
             display.style.display = 'block';
         });
 
-        // Start auto-play
         resetAutoPlay();
+
+        function sweetBlast(side, slideId) {
+            const slide = document.getElementById(slideId);
+            if (!slide) return;
+            
+            const rect = slide.getBoundingClientRect();
+            const x = side === 'left' ? rect.left + rect.width * 0.15 : rect.left + rect.width * 0.85;
+            const y = rect.top + rect.height * 0.5;
+            
+            const hearts = ['💖', '💕', '💗', '💓', '🌸', '🌺', '✨', '⭐'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = x + 'px';
+                    heart.style.top = y + 'px';
+                    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '9999';
+                    
+                    const angle = (Math.random() * Math.PI * 2);
+                    const distance = 80 + Math.random() * 100;
+                    const endX = x + Math.cos(angle) * distance;
+                    const endY = y + Math.sin(angle) * distance;
+                    
+                    const clampedEndX = Math.max(rect.left + 50, Math.min(rect.right - 50, endX));
+                    const clampedEndY = Math.max(rect.top + 50, Math.min(rect.bottom - 50, endY));
+                    
+                    heart.animate([
+                        { 
+                            transform: 'translate(0, 0) scale(0) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: `translate(${(clampedEndX - x) / 2}px, ${(clampedEndY - y) / 2}px) scale(1.2) rotate(180deg)`,
+                            opacity: 1,
+                            offset: 0.5
+                        },
+                        { 
+                            transform: `translate(${clampedEndX - x}px, ${clampedEndY - y}px) scale(0.5) rotate(360deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 1500,
+                        easing: 'ease-out'
+                    });
+                    
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }, i * 50);
+            }
+        }
+
+        function envelopeBlast(side, slideId) {
+            const slide = document.getElementById(slideId);
+            if (!slide) return;
+            
+            const rect = slide.getBoundingClientRect();
+            const x = side === 'left' ? rect.left + rect.width * 0.15 : rect.left + rect.width * 0.85;
+            const y = rect.top + rect.height * 0.5;
+            
+            const items = ['💌', '✉️', '🖊️', '✒️', '📝', '📄', '📃', '🗒️'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const item = document.createElement('div');
+                    item.textContent = items[Math.floor(Math.random() * items.length)];
+                    item.style.position = 'fixed';
+                    item.style.left = x + 'px';
+                    item.style.top = y + 'px';
+                    item.style.fontSize = (20 + Math.random() * 20) + 'px';
+                    item.style.pointerEvents = 'none';
+                    item.style.zIndex = '9999';
+                    
+                    const angle = (Math.random() * Math.PI * 2);
+                    const distance = 80 + Math.random() * 100;
+                    const endX = x + Math.cos(angle) * distance;
+                    const endY = y + Math.sin(angle) * distance;
+                    
+                    const clampedEndX = Math.max(rect.left + 50, Math.min(rect.right - 50, endX));
+                    const clampedEndY = Math.max(rect.top + 50, Math.min(rect.bottom - 50, endY));
+                    
+                    item.animate([
+                        { 
+                            transform: 'translate(0, 0) scale(0) rotate(0deg)',
+                            opacity: 0
+                        },
+                        { 
+                            transform: `translate(${(clampedEndX - x) / 2}px, ${(clampedEndY - y) / 2}px) scale(1.2) rotate(180deg)`,
+                            opacity: 1,
+                            offset: 0.5
+                        },
+                        { 
+                            transform: `translate(${clampedEndX - x}px, ${clampedEndY - y}px) scale(0.5) rotate(360deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: 1500,
+                        easing: 'ease-out'
+                    });
+                    
+                    document.body.appendChild(item);
+                    setTimeout(() => item.remove(), 1500);
+                }, i * 50);
+            }
+        }
+
+        if (currentSlide === 0) {
+            setTimeout(() => {
+                sweetBlast('left', 'firstSlide');
+            }, 5000);
+            
+            setTimeout(() => {
+                sweetBlast('right', 'firstSlide');
+            }, 5500);
+        }
     </script>
 </body>
-
 </html>
