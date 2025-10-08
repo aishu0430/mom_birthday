@@ -471,7 +471,44 @@
             }
         }
 
-        @media (max-width: 768px) {
+        /* Mobile Phones - Portrait */
+        @media (max-width: 480px) {
+            body { font-size: 14px; }
+            .letter-box { 
+                padding: 20px 15px;
+                max-height: 75vh;
+                border-width: 3px;
+            }
+            .letter-box h1 { font-size: 1.8em; line-height: 1.3; }
+            .letter-box h2 { font-size: 1.4em; }
+            .letter-box h3 { font-size: 1.2em; padding-left: 15px; }
+            .letter-box p { font-size: 0.95em; line-height: 1.6; }
+            .letter-box blockquote { font-size: 1em; padding: 15px; }
+            .signature { font-size: 1.1em; }
+            .cake-big { font-size: 80px; }
+            .hero-emojis { font-size: 1.5em; }
+            .hero-subtitle { font-size: 1.2em; }
+            .play-pause-btn {
+                top: 45px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            .wish-button {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                margin: 5px;
+            }
+            .wish-display { font-size: 1em; padding: 15px; }
+            .heart { font-size: 20px; }
+            .balloon { width: 40px; height: 50px; }
+            .lights { height: 30px; }
+            .light { width: 10px; height: 10px; }
+        }
+
+        /* Mobile Phones - Landscape & Small Tablets */
+        @media (min-width: 481px) and (max-width: 768px) {
+            body { font-size: 15px; }
             .letter-box { 
                 padding: 30px 20px;
                 max-height: 80vh;
@@ -500,6 +537,116 @@
             .letter-paper {
                 width: 90%;
                 padding: 30px;
+            }
+        }
+
+        /* Tablets & Small Laptops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            body { font-size: 16px; }
+            .letter-box { 
+                padding: 40px 30px;
+                max-width: 750px;
+            }
+            .letter-box h1 { font-size: 2.5em; }
+            .letter-box h2 { font-size: 2em; }
+            .letter-box h3 { font-size: 1.5em; }
+            .cake-big { font-size: 130px; }
+            .play-pause-btn {
+                top: 55px;
+                right: 20px;
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+        }
+
+        /* Laptops & Desktops */
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            body { font-size: 16px; }
+            .letter-box { 
+                padding: 50px 40px;
+                max-width: 850px;
+            }
+            .letter-box h1 { font-size: 2.8em; }
+            .cake-big { font-size: 150px; }
+        }
+
+        /* Large Desktops & TVs */
+        @media (min-width: 1441px) and (max-width: 1920px) {
+            body { font-size: 18px; }
+            .letter-box { 
+                padding: 60px 50px;
+                max-width: 950px;
+            }
+            .letter-box h1 { font-size: 3em; }
+            .letter-box h2 { font-size: 2.4em; }
+            .letter-box h3 { font-size: 1.8em; }
+            .letter-box p { font-size: 1.2em; }
+            .cake-big { font-size: 170px; }
+            .hero-emojis { font-size: 2.8em; }
+            .heart { font-size: 35px; }
+            .balloon { width: 70px; height: 85px; }
+        }
+
+        /* Ultra-Wide & 4K Displays */
+        @media (min-width: 1921px) {
+            body { font-size: 20px; }
+            .letter-box { 
+                padding: 70px 60px;
+                max-width: 1100px;
+            }
+            .letter-box h1 { font-size: 3.5em; }
+            .letter-box h2 { font-size: 2.8em; }
+            .letter-box h3 { font-size: 2em; }
+            .letter-box p { font-size: 1.3em; }
+            .letter-box blockquote { font-size: 1.25em; padding: 25px; }
+            .signature { font-size: 1.5em; }
+            .cake-big { font-size: 200px; }
+            .hero-emojis { font-size: 3.2em; }
+            .hero-subtitle { font-size: 2em; }
+            .wish-button { 
+                padding: 18px 35px;
+                font-size: 1.2em;
+            }
+            .wish-display { font-size: 1.3em; padding: 30px; }
+            .heart { font-size: 40px; }
+            .balloon { width: 80px; height: 100px; }
+            .lights { height: 50px; }
+            .light { width: 20px; height: 20px; }
+            .play-pause-btn {
+                top: 70px;
+                right: 40px;
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+
+        /* Projector & Large TV (16:9 aspect ratio optimization) */
+        @media (min-width: 1920px) and (aspect-ratio: 16/9) {
+            .letter-box { 
+                max-width: 1200px;
+                padding: 80px 70px;
+            }
+            .letter-box h1 { font-size: 4em; margin: 80px 0; }
+            .hero-emojis { font-size: 3.5em; }
+        }
+
+        /* Landscape Mobile Devices */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .letter-box { 
+                max-height: 90vh;
+                padding: 20px;
+            }
+            .letter-box h1 { font-size: 1.8em; margin: 20px 0; }
+            .letter-box h2 { font-size: 1.5em; }
+            .letter-box h3 { font-size: 1.2em; margin-top: 15px; }
+            .letter-box p { font-size: 0.9em; line-height: 1.5; }
+            .hero-emojis { font-size: 1.5em; margin: 10px 0; }
+            .cake-big { font-size: 80px; }
+            .play-pause-btn {
+                top: 40px;
+                right: 10px;
+                padding: 5px 10px;
+                font-size: 10px;
             }
         }
     </style>
@@ -737,12 +884,37 @@
         const slides = document.querySelectorAll('.carousel-slide');
         const playPauseBtn = document.getElementById('playPauseBtn');
 
+        // Define duration for each slide in milliseconds (15-30 seconds based on content)
+        const slideDurations = [
+            15000,  // Slide 0: Title slide - 15 seconds
+            15000,  // Slide 1: Letter intro - 15 seconds
+            25000,  // Slide 2: The Beginning - 25 seconds
+            25000,  // Slide 3: Warrior Mother - 25 seconds
+            20000,  // Slide 4: First Breath - 20 seconds
+            20000,  // Slide 5: The Promise - 20 seconds
+            25000,  // Slide 6: Growing Up - 25 seconds
+            20000,  // Slide 7: Precious Memories - 20 seconds
+            25000,  // Slide 8: Through Every Season - 25 seconds
+            25000,  // Slide 9: My Champion - 25 seconds
+            30000,  // Slide 10: My Warrior - 30 seconds
+            20000,  // Slide 11: My Everything - 20 seconds
+            25000,  // Slide 12: Deepest Gratitude - 25 seconds
+            20000,  // Slide 13: What Mother Means - 20 seconds
+            15000,  // Slide 14: Today Your Special Day - 15 seconds
+            25000,  // Slide 15: Happy Birthday - 25 seconds
+            25000,  // Slide 16: A Promise - 25 seconds
+            25000,  // Slide 17: Promise Forever - 25 seconds
+            25000,  // Slide 18: Thank You For Everything - 25 seconds
+            25000,  // Slide 19: Thank You For Being You - 25 seconds
+            30000,  // Slide 20: Quote and P.S. - 30 seconds
+            0       // Slide 21: Celebration (no auto-advance, interactive)
+        ];
+
         function showSlide(n) {
             slides.forEach(slide => slide.classList.remove('active'));
             currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             
-            // Trigger effects for slide 1
             if (currentSlide === 0) {
                 setTimeout(() => {
                     sweetBlast('left', 'firstSlide');
@@ -753,7 +925,6 @@
                 }, 5500);
             }
             
-            // Trigger effects for slide 2
             if (currentSlide === 1) {
                 setTimeout(() => {
                     envelopeBlast('left', 'secondSlide');
@@ -778,7 +949,11 @@
                 clearTimeout(autoPlayTimer);
             }
             if (isPlaying) {
-                autoPlayTimer = setTimeout(nextSlide, 60000);
+                const duration = slideDurations[currentSlide];
+                // If duration is 0 (celebration slide), don't auto-advance
+                if (duration > 0) {
+                    autoPlayTimer = setTimeout(nextSlide, duration);
+                }
             }
         }
 
